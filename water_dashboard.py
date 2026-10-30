@@ -14,6 +14,10 @@ st.subheader("Marcelo Ortiz")
 st.divider()
 
 
+st.sidebar.title("🌊 Water Quality", anchor=False)
+st.sidebar.caption("Data, charts, and maps")
+st.sidebar.divider()
+
 st.sidebar.header("File Upload")
 st.sidebar.info("Upload a CSV file with water quality data")
 uploaded_file = st.sidebar.file_uploader("Upload a CSV file", type=["csv"])
