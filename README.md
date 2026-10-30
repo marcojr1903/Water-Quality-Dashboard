@@ -74,5 +74,5 @@ The included Biscayne Bay dataset loads automatically.
   column names and structure as the included dataset.
 
 ## Live App
-Add your public Streamlit URL after deployment.
+https://water-quality-dashboard-marcelo.streamlit.app/
 
