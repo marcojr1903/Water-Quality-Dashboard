@@ -53,11 +53,13 @@ with tables:
     else:
         display_df = df
 
-    st.dataframe(display_df)
+    st.dataframe(display_df, height=450)
     st.caption(
         f"{len(display_df):,} observations and "
         f"{len(display_df.columns)} columns displayed."
     )
+
+    st.divider()
 
     st.subheader("Descriptive Statistics")
     st.write("Descriptive statistics for the loaded dataset")
@@ -66,7 +68,6 @@ with tables:
 
 # Interactive charts
 with plots:
-    st.subheader("Line Chart")
     parameter = st.selectbox(
         "Select Line Chart Parameter",
         options=df.columns.tolist(),
@@ -78,11 +79,13 @@ with plots:
         y=parameter,
         title=f"{parameter} over Time",
     )
-    st.plotly_chart(fig1)
+    st.plotly_chart(fig1, height=550)
     st.caption(
         "Shows how the selected parameter changes over time. "
         "Use the dropdown to choose a parameter and hover over the line to see values."
     )
+
+    st.divider()
 
     fig2 = px.scatter(
         df,
@@ -90,7 +93,7 @@ with plots:
         y="Salinity (ppt)",
         title="Temperature vs Salinity",
     )
-    st.plotly_chart(fig2)
+    st.plotly_chart(fig2, height=550)
     st.caption(
         f"Recorded temperatures range from "
         f"{df['Temperature (c)'].min():.1f} to "
@@ -100,6 +103,8 @@ with plots:
         f"{df['Salinity (ppt)'].max():.2f} ppt.  \n"
         "Hover over data points to see individual values."
     )
+
+    st.divider()
 
     fig3 = px.scatter_3d(
         df,
@@ -111,7 +116,8 @@ with plots:
     )
     fig3.update_scenes(zaxis_autorange="reversed")  # Show greater depth lower down
     fig3.update_traces(marker_size=3)
-    st.plotly_chart(fig3)
+    fig3.update_layout(margin={"b": 10, "l": 10, "r": 10, "t": 100})
+    st.plotly_chart(fig3, height=850)
     st.caption(
         "Shows recorded water-column depth by location, "
         "with color indicating temperature. "
